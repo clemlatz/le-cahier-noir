@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="pull-right">
+        <a class="btn btn-primary" href="{{ path('text_create') }}">Nouveau texte</a>
+    </div>
+    
+    <ul>
+        {% for text in texts %}
+            <li><a href="{{ path('text_show', { id: text.id }) }}">{{ text.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
