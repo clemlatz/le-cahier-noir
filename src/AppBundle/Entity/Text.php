@@ -31,9 +31,9 @@ class Text
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="content", type="text")
      */
-    private $text;
+    private $content;
 
     /**
      * @var \DateTime
@@ -45,7 +45,7 @@ class Text
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="datetime")
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -150,5 +150,28 @@ class Text
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Text
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }
