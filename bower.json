@@ -1,0 +1,25 @@
+{
+  "name": "lcn",
+  "version": "11.0.0",
+  "authors": [
+    "Clement Bourgoin <cb@nokto.net>"
+  ],
+  "description": "Quelques grammes de littérature dans un monde de bits",
+  "main": "web/app.php",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.lecahiernoir.net/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}
