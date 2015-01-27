@@ -22,37 +22,6 @@ class TextController extends Controller
         return $this->render('AppBundle:Text:list.html.twig', array('texts' => $texts));
     }
     
-    /**
-     * @Route("/text/{id}", requirements={"id" = "\d+"}, name="text_show")
-     */
-    public function showAction($id)
-    {
-        $text = $this->getDoctrine()->getRepository('AppBundle:Text')->find($id);
-        
-        if (!$text)
-        {
-            throw $this->createNotFoundException("Texte $id inconnu.");
-        }
-        
-        return $this->redirect($this->generateUrl('text_show_slug', array('slug' => $text->getSlug())));
-        
-    }
-    
-    /**
-     * @Route("/text/{slug}", requirements={"slug"}, name="text_show_slug")
-     */
-    public function showBySlugAction($slug)
-    {
-        $text = $this->getDoctrine()->getRepository('AppBundle:Text')->findOneBySlug($slug);
-        
-        if (!$text)
-        {
-            throw $this->createNotFoundException("Texte $id inconnu.");
-        }
-        
-        return $this->render('AppBundle:Text:show.html.twig', array('text' => $text));
-        
-    }
     
     /**
      * @Route("/text/new", name="text_create")
@@ -78,12 +47,42 @@ class TextController extends Controller
             $em->persist($text);
             $em->flush();
             
-            dump($text);
-            
-            return $this->redirect($this->generateUrl('text_show', array('id' => $text->getId())));
+            return $this->redirect($this->generateUrl('text_show_slug', array('slug' => $text->getSlug())));
         }
         
         return $this->render('AppBundle:Text:create.html.twig', array('form' => $form->createView()));
+    }
+    
+    /**
+     * @Route("/text/{id}", requirements={"id" = "\d+"}, name="text_show")
+     */
+    public function showAction($id)
+    {
+        $text = $this->getDoctrine()->getRepository('AppBundle:Text')->find($id);
+        
+        if (!$text)
+        {
+            throw $this->createNotFoundException("Texte $id inconnu.");
+        }
+        
+        return $this->redirect($this->generateUrl('text_show_slug', array('slug' => $text->getSlug())));
+        
+    }
+    
+    /**
+     * @Route("/text/{slug}", requirements={"slug"}, name="text_show_slug")
+     */
+    public function showBySlugAction($slug)
+    {
+        $text = $this->getDoctrine()->getRepository('AppBundle:Text')->findOneBySlug($slug);
+        
+        if (!$text)
+        {
+            throw $this->createNotFoundException("Texte $slug inconnu.");
+        }
+        
+        return $this->render('AppBundle:Text:show.html.twig', array('text' => $text));
+        
     }
     
     /**
@@ -115,9 +114,7 @@ class TextController extends Controller
             $em->persist($text);
             $em->flush();
             
-            dump($text);
-            
-            return $this->redirect($this->generateUrl('text_show', array('id' => $text->getId())));
+            return $this->redirect($this->generateUrl('text_show_slug', array('slug' => $text->getSlug())));
         }
         
         return $this->render('AppBundle:Text:create.html.twig', array('form' => $form->createView()));
