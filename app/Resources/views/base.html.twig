@@ -9,8 +9,15 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <style>
-            #main {
+            #main, #footer {
                 max-width: 768px;
+            }
+            
+            #footer {
+                background-color: whitesmoke;
+                padding: 10px;
+                text-align: center;
+                font-size: .8em;
             }
         </style>
     </head>
@@ -19,9 +26,15 @@
             <h1><a href="/">Le Cahier Noir</a></h1>
             {% block body %}{% endblock %}
         </div>
+        
+        <div id="footer" class="container">
+            v. 11.0.0
+        </div>
+        
         {% block javascripts %}
             <script src="{{ asset('/libs/jquery/dist/jquery.min.js') }}"></script>
             <script src="{{ asset('/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         {% endblock %}
+        
     </body>
 </html>
