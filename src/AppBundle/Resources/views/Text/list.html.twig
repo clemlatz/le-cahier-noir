@@ -9,7 +9,7 @@
     
     <ul>
         {% for text in texts %}
-            <li><a href="{{ path('text_show', { id: text.id }) }}">{{ text.title }}</a></li>
+            <li><a href="{{ path('text_show_slug', { slug: text.slug }) }}">{{ text.title }}</a></li>
         {% endfor %}
     </ul>
 

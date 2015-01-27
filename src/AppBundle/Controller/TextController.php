@@ -34,6 +34,22 @@ class TextController extends Controller
             throw $this->createNotFoundException("Texte $id inconnu.");
         }
         
+        return $this->redirect($this->generateUrl('text_show_slug', array('slug' => $text->getSlug())));
+        
+    }
+    
+    /**
+     * @Route("/text/{slug}", requirements={"slug"}, name="text_show_slug")
+     */
+    public function showBySlugAction($slug)
+    {
+        $text = $this->getDoctrine()->getRepository('AppBundle:Text')->findOneBySlug($slug);
+        
+        if (!$text)
+        {
+            throw $this->createNotFoundException("Texte $id inconnu.");
+        }
+        
         return $this->render('AppBundle:Text:show.html.twig', array('text' => $text));
         
     }
