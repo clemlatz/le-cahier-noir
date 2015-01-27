@@ -94,7 +94,7 @@ class TextController extends Controller
         {
             $em = $this->getDoctrine()->getEntityManager();
             
-            $text->setCreated(new \DateTime());
+            $text->setUpdated(new \DateTime());
             
             $em->persist($text);
             $em->flush();
