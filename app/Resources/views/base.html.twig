@@ -8,9 +8,14 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('/libs/bootstrap/dist/css/bootstrap.min.css') }}" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style>
+            #main {
+                max-width: 768px;
+            }
+        </style>
     </head>
     <body>
-        <div class="container">
+        <div id="main" class="container">
             <h1><a href="/">Le Cahier Noir</a></h1>
             {% block body %}{% endblock %}
         </div>
