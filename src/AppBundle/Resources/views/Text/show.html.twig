@@ -1,13 +1,13 @@
 {% extends "::base.html.twig" %}
 
+{% block contextMenu %}
+    <a href="{{ path('text_edit', { id: text.id }) }}" class="btn btn-primary navbar-btn btn-sm">Éditer</a>
+{% endblock %}
+
 {% block body %}
 
     <h1>{{ text.title}}</h1>
     
     {{ text.content|markdown }}
-    
-    <p>
-        <a href="{{ path('text_edit', { id: text.id }) }}" class="btn btn-primary">Éditer</a>
-    </p>
     
 {% endblock %}

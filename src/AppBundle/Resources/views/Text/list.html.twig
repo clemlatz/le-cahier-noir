@@ -1,11 +1,12 @@
 {% extends "::base.html.twig" %}
 
-{% block body %}
-
+{% block contextMenu %}
     <div class="text-center">
-        <a class="btn btn-primary" href="{{ path('text_create') }}">Nouveau texte</a>
+        <a class="btn btn-primary navbar-btn btn-sm" href="{{ path('text_create') }}">Nouveau texte</a>
     </div>
-    <br>
+{% endblock %}
+
+{% block body %}
     
     <ul>
         {% for text in texts %}
